@@ -1,0 +1,23 @@
+---
+- hosts: localhost
+  tasks:
+    - name: epel repo installed
+      yum: name=epel-release state=present
+
+    - name: mod_wsgi installed
+      yum: name=mod_wsgi state=present
+
+    - name: flask installed
+      yum: name=python-flask state=present
+
+    - name: copy example files
+      copy: src=files/flaskdemo dest=/var/www 
+
+    - name: copy apache configuration file  
+      copy: src=files/flaskdemo.conf dest=/etc/httpd/conf.d/
+      notify: restart apache
+ 
+  handlers:
+    - name: restart apache
+      service: name=httpd state=restarted
+    
