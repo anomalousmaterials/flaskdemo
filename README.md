@@ -21,7 +21,7 @@ ansible-playbook -i 'localhost,' -c local main.yml
 
 After completion, the files can be found under /var/www/flaskdemo and the apps can be accessed at:
 
-* http:/localhost/wsgi
-* http:/localhost/flask
+* http://localhost/wsgi
+* http://localhost/flask
 
 
